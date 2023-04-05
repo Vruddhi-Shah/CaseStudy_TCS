@@ -1,0 +1,49 @@
+﻿<h3>List of Employee</h3>
+
+<p>
+    <a asp-action="CreateEmployee">Create New Employee</a>
+</p>
+<div id="mainContainer">  
+       <div class="row">  
+           <div class="col-md-12">  
+              <table id="tbl">  
+                  <thead>  
+                      <tr>  
+                          <th>Id</th>
+                          <th>Name</th>  
+                          <th>Email</th>  
+                          <th>Gender</th>  
+                          <th>Status</th>  
+                          <th>Action</th>
+                      </tr>  
+                  </thead>                
+              </table>  
+           </div>  
+       </div>  
+   </div>
+
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.18/css/jquery.dataTables.min.css" />  
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>  
+<script>  
+    var oTable = $( '#tbl').dataTable({  
+        "bServerSide": true ,  
+        "sAjaxSource": "/Employee/GetEmployeeList",  
+        "sServerMethod": "POST" ,  
+        "aoColumns": [  
+        { "mData": "id" },  
+        { "mData": "Name" },  
+        { "mData": "Email" },  
+        { "mData": "Gender" },  
+        { "mData": "Status" },  
+        {  
+            "mData": function (o) { 
+                return "<a href='/Employee/EditEmployee?id="+o.id+"' class='btn btn-info'><i class='fa fa-pencil'></i></a> &nbsp" +
+                "<a href='/Employee/DeleteEmployee?id="+o.id+"' class='btn btn-info'><i class='fa fa-trash'></i></a> &nbsp" + 
+                "<a href='/Employee/EmployeeDetails?id="+o.id+"' class='btn btn-info'><i class='fa fa-info-circle'></i></a>";  
+            }  
+        }  
+        ],  
+    });  
+</script>  

@@ -1,0 +1,78 @@
+﻿@model IEnumerable<CaseStudy_TCS.Models.EmployeeDetails>
+
+@{
+    ViewData["Title"] = "GetAllEmployee";
+}
+
+<h3>List of Employee</h3>
+
+<p>
+    <a asp-action="CreateEmployee">Create New Employee</a>
+</p>
+<div style="width:90%; margin:0 auto;">
+<table id="employeeDetails" class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Gender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditEmployee", new { id=item.id }) |
+                @Html.ActionLink("Details", "EmployeeDetails", new { id=item.id  }) |
+                @Html.ActionLink("Delete", "DeleteEmployee", new { id=item.id })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</div>
+
+<style>
+    tr.even {
+    background-color: #F5F5F5 !important;
+}
+</style>
+<link href="//cdn.datatables.net/1.10.9/css/jquery.dataTables.min.css" rel="stylesheet" />
+
+@section Scripts{
+    <script src="//cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#employeeDetails').DataTable();
+          
+        });
+    </script>
+}
