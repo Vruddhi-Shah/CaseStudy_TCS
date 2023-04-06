@@ -19,8 +19,7 @@ namespace CaseStudy_TCS_UnitTest
         [Test]
         public void GetEmployee()
         {
-            var testEmployeeDetails = GetTestEmployee();
-            var controller = new EmployeeController(testEmployeeDetails);
+            var controller = new EmployeeController();
             var result = controller.GetEmployeeList("1",1,4,null) ;
             Assert.IsNotNull(result);
         }
@@ -29,8 +28,7 @@ namespace CaseStudy_TCS_UnitTest
         public void GetEmployeeDetailById()
         {
             var employeeId = 1;
-            var testEmployeeDetails = GetTestEmployee();
-            var controller = new EmployeeController(testEmployeeDetails);
+            var controller = new EmployeeController();
             var result = controller.EmployeeDetails(employeeId);
             Assert.IsNotNull(result);
         }
