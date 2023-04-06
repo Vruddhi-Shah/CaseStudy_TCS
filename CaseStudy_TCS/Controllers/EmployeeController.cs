@@ -13,6 +13,15 @@ namespace CaseStudy_TCS.Controllers
     {
         public static readonly HttpClient client = new HttpClient();
 
+        List<EmployeeDetails> employeeDetails1 = new List<EmployeeDetails>();
+
+        public EmployeeController() { }
+
+        public EmployeeController(List<EmployeeDetails> employeeDetails)
+        {
+            this.employeeDetails1 = employeeDetails;
+        }
+
         public ActionResult GetEmployee(int page = 0)
         {
             return View();
