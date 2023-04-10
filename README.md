@@ -1,5 +1,7 @@
 # CaseStudy_TCS
 
+This application has been created in .net framework 6 so, it is compatible and runnable 6 or higher version.
+
 This case study is for the employee.
 - Get the employee data from the restful api.
 - Perfomed add, update, delete and details operation on that.
