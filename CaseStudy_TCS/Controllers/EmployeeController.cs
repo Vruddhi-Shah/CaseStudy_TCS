@@ -122,12 +122,33 @@ namespace CaseStudy_TCS.Controllers
             return View(model.data);
         }
 
+
+        public class EmployeeObject
+
+        {
+            public int? id { get; set; }
+            public string name { get; set; }
+            public string email { get; set; }
+            public string gender { get; set; }
+            public string status { get; set; }
+        }
+
+
+
         [HttpPost]
         public async Task<ActionResult> EditEmployee(EmployeeDetails employeeDetails)
         {
-            string json = JsonConvert.SerializeObject(employeeDetails);
+            var empDetail = new EmployeeObject
+            {
+                id = employeeDetails.id,
+                name = employeeDetails.Name,
+                email = employeeDetails.Email,
+                gender = employeeDetails.Gender.ToLower(),
+                status = employeeDetails.Status.ToLower()
+            };
+            string json = JsonConvert.SerializeObject(empDetail);
             var client = new HttpClient();
-            var request = new HttpRequestMessage(HttpMethod.Put, $"{Utility.APIURL}/{employeeDetails.id}");
+            var request = new HttpRequestMessage(HttpMethod.Put, $"{Utility.APIURL}/{empDetail.id}");
             request.Headers.Add("Authorization", $"{Utility.Token} {Utility.APIToken}");
             var content = new StringContent(json, null, "application/json");
             request.Content = content;
