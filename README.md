@@ -10,4 +10,5 @@ This case study is for the employee.
 
 Note :: If the dependency is not exist please give the reference.
 for that click right on the project and click on load entier dependency tree
+if you can't find the option, please check .net6 is installed on your computer or not. if not then please install .net 6
 
