@@ -33,15 +33,40 @@ namespace CaseStudy_TCS_UnitTest
             Assert.IsNotNull(result);
         }
 
-        private List<EmployeeDetails> GetTestEmployee()
+        [Test]
+        public void DeleteEmployee()
         {
-            var testEmployeeDetails = new List<EmployeeDetails>();
-            testEmployeeDetails.Add(new EmployeeDetails { id = 1, Name = "Test1", Email ="Test1@gmail.com" ,Gender = "Male",Status = "Active" });
-            testEmployeeDetails.Add(new EmployeeDetails { id = 2, Name = "Test2", Email = "Test2@gmail.com", Gender = "FeMale", Status = "InActive" });
-            testEmployeeDetails.Add(new EmployeeDetails { id = 3, Name = "Test3", Email = "Test3@gmail.com", Gender = "Male", Status = "Active" });
-            testEmployeeDetails.Add(new EmployeeDetails { id = 4, Name = "Test4", Email = "Test4@gmail.com", Gender = "FeMale", Status = "InActive" });
-            testEmployeeDetails.Add(new EmployeeDetails { id = 5, Name = "Test5", Email = "Test5@gmail.com", Gender = "FeMale", Status = "InActive" });
-            return testEmployeeDetails;
+            var employeeId = 1;
+            var controller = new EmployeeController();
+            var result = controller.DeleteEmployee(employeeId);
+            Assert.IsNotNull(result);
+        }
+
+        [Test]
+        public void CreateEmployee()
+        {
+            EmployeeDetails employeeDetails = new EmployeeDetails();
+            employeeDetails.Name = "pavana";
+            employeeDetails.Email = "pavana@yopmail.com";
+            employeeDetails.Gender = "Female";
+            employeeDetails.Status = "Active";
+            var controller = new EmployeeController();
+            var result = controller.CreateEmployee(employeeDetails);
+            Assert.IsNotNull(result);
+        }
+
+        [Test]
+        public void EditEmployee()
+        {
+            EmployeeDetails employeeDetails = new EmployeeDetails();
+            employeeDetails.Name = "Sahana shaikh";
+            employeeDetails.Email = "sahanashaikh@yopmail.com";
+            employeeDetails.Gender = "Female";
+            employeeDetails.Status = "InActive";
+            employeeDetails.id = 2056;
+            var controller = new EmployeeController();
+            var result = controller.EditEmployee(employeeDetails);
+            Assert.IsNotNull(result);
         }
     }
 }
