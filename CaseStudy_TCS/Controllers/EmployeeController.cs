@@ -13,6 +13,7 @@ namespace CaseStudy_TCS.Controllers
     {
         public static readonly HttpClient client = new HttpClient();
 
+        [HttpGet]
         public ActionResult GetEmployee(int page = 0)
         {
             return View();
@@ -64,6 +65,7 @@ namespace CaseStudy_TCS.Controllers
             return View(model.data);
         }
 
+        [HttpGet]
         public async Task<IActionResult> DeleteEmployee(int? id)
         {
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(Utility.Token, Utility.APIToken);
@@ -90,6 +92,7 @@ namespace CaseStudy_TCS.Controllers
             return RedirectToAction("GetEmployee");
         }
 
+        [HttpGet]
         public IActionResult CreateEmployee()
         {
             return View();
@@ -113,6 +116,7 @@ namespace CaseStudy_TCS.Controllers
             return RedirectToAction("GetEmployee");
         }
 
+        [HttpGet]
         public async Task<IActionResult> EditEmployee(int? id)
         {
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(Utility.Token, Utility.APIToken);
